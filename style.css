@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+}
+
+.invitation-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #b21f1f, #fdbb2d, #1a2a6c);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.church-logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #b21f1f;
+    margin-bottom: 5px;
+}
+
+.church-logo p {
+    color: #666;
+    font-size: 0.9em;
+    font-weight: 300;
+}
+
+.natal-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #1a2a6c;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.natal-title p {
+    font-size: 1.2em;
+    color: #b21f1f;
+    font-weight: 600;
+}
+
+.bible-verse {
+    text-align: center;
+    margin: 25px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    border-left: 4px solid #b21f1f;
+}
+
+.bible-verse p {
+    font-style: italic;
+    color: #333;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.verse-ref {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #1a2a6c !important;
+}
+
+.details {
+    margin: 30px 0;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.detail-item:hover {
+    transform: translateY(-5px);
+}
+
+.detail-item .icon {
+    font-size: 2em;
+    margin-right: 15px;
+    min-width: 50px;
+}
+
+.detail-item .text h3 {
+    color: #1a2a6c;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.detail-item .text p {
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.address {
+    font-size: 0.9em !important;
+    color: #666 !important;
+    font-weight: 400 !important;
+    margin-top: 5px;
+}
+
+.theme {
+    text-align: center;
+    margin: 25px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+    color: white;
+    border-radius: 15px;
+}
+
+.theme h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.theme p {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.footer p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.contact {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.contact p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* Animasi salju */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .invitation-card {
+        padding: 20px;
+    }
+    
+    .church-logo h1 {
+        font-size: 2em;
+    }
+    
+    .natal-title h2 {
+        font-size: 1.7em;
+    }
+    
+    .detail-item {
+        padding: 12px;
+    }
+    
+    .detail-item .icon {
+        font-size: 1.5em;
+        margin-right: 12px;
+        min-width: 40px;
+    }
+}
