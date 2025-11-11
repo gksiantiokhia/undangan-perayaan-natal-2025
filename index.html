@@ -3,403 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Perayaan Natal - GKSI Jemaat Antiokhia Jakarta</title>
+    <title>Undangan Digital Natal Gereja [Nama Gereja]</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+    
+    </head>
 <body>
-    <!-- Music Player -->
-    <div class="music-player">
-        <button id="musicToggle" class="music-btn">
-            <i class="fas fa-music"></i>
-            <span id="musicStatus">Musik: OFF</span>
-        </button>
-        <audio id="backgroundMusic" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            Browser Anda tidak mendukung elemen audio.
-        </audio>
-    </div>
-
-    <!-- Password Protection Modal -->
-    <div id="passwordModal" class="modal">
-        <div class="modal-content">
-            <h2><i class="fas fa-lock"></i> Undangan Terproteksi</h2>
-            <p>Masukkan kode akses untuk membuka undangan</p>
-            <input type="password" id="passwordInput" placeholder="Masukkan password...">
-            <button onclick="checkPassword()">Buka Undangan</button>
-            <p class="hint">Hint: Tanggal acara (DDMM)</p>
-        </div>
-    </div>
-
-    <!-- Halaman Input Nama -->
-    <div id="nameInputPage" class="page">
-        <div class="name-input-container">
-            <div class="welcome-card">
-                <h1>🎄 Selamat Datang 🎄</h1>
-                <p>Undangan Perayaan Natal 2025</p>
-                <p class="church-name">Gereja Kristen Setia Indonesia Jemaat Antiokhia Jakarta</p>
-                
-                <div class="input-group">
-                    <label for="guestName"><i class="fas fa-user"></i> Masukkan Nama Anda:</label>
-                    <input type="text" id="guestName" placeholder="Nama lengkap Anda..." autocomplete="off">
-                    <button id="enterBtn" onclick="enterInvitation()">
-                        <i class="fas fa-arrow-right"></i> Masuk ke Undangan
-                    </button>
-                </div>
-                
-                <div class="countdown-preview">
-                    <h3><i class="fas fa-clock"></i> Countdown Menuju Natal:</h3>
-                    <div id="previewCountdown" class="countdown-timer">
-                        <div class="countdown-item">
-                            <span id="previewDays">00</span>
-                            <small>Hari</small>
-                        </div>
-                        <div class="countdown-item">
-                            <span id="previewHours">00</span>
-                            <small>Jam</small>
-                        </div>
-                        <div class="countdown-item">
-                            <span id="previewMinutes">00</span>
-                            <small>Menit</small>
-                        </div>
-                        <div class="countdown-item">
-                            <span id="previewSeconds">00</span>
-                            <small>Detik</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-share">
-                    <p>Bagikan undangan ini:</p>
-                    <div class="share-buttons">
-                        <button class="share-btn whatsapp" onclick="shareWhatsApp()">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </button>
-                        <button class="share-btn telegram" onclick="shareTelegram()">
-                            <i class="fab fa-telegram"></i> Telegram
-                        </button>
-                        <button class="share-btn facebook" onclick="shareFacebook()">
-                            <i class="fab fa-facebook"></i> Facebook
-                        </button>
-                    </div>
-                </div>
+    <div id="undangan-wrapper">
+        <header class="hero-section">
+            <img src="images/star.png" alt="Bintang Natal" class="star-icon">
+            <h1>Perayaan Natal [Tahun]</h1>
+            <h2>Gereja [Nama Gereja Anda]</h2>
+            <p class="ayat-tema">"Karena begitu besar kasih Allah akan dunia ini..." (Yohanes 3:16)</p>
+            
+            <div id="countdown-timer">
+                <p>Natal Tiba Dalam:</p>
+                <div id="timer-display"></div>
             </div>
-        </div>
-    </div>
+            
+            <button id="open-undangan">Buka Undangan</button>
+        </header>
 
-    <!-- Halaman Undangan Utama -->
-    <div id="mainInvitationPage" class="page">
-        <div class="container">
-            <div class="invitation-card">
-                <!-- Header dengan Navigation -->
-                <div class="header-nav">
-                    <button class="nav-btn" onclick="showSection('home')">
-                        <i class="fas fa-home"></i> Beranda
-                    </button>
-                    <button class="nav-btn" onclick="showSection('rsvp')">
-                        <i class="fas fa-edit"></i> RSVP
-                    </button>
-                    <button class="nav-btn" onclick="showSection('gallery')">
-                        <i class="fas fa-images"></i> Galeri
-                    </button>
-                    <button class="nav-btn" onclick="showSection('guestbook')">
-                        <i class="fas fa-book"></i> Buku Tamu
-                    </button>
-                </div>
-
-                <!-- Section: Home -->
-                <div id="homeSection" class="section active">
-                    <div class="header">
-                        <div class="church-logo">
-                            <h1>GKSI</h1>
-                            <p>Jemaat Antiokhia Jakarta</p>
-                        </div>
-                        <div class="natal-title">
-                            <h2>Perayaan Natal</h2>
-                            <p>2025</p>
-                        </div>
-                        <div class="guest-welcome">
-                            <p>Kepada: <span id="displayName">Tamu Terhormat</span></p>
-                        </div>
-                    </div>
-
-                    <!-- Countdown Timer -->
-                    <div class="countdown-section">
-                        <h3><i class="fas fa-bell"></i> Menuju Perayaan Natal:</h3>
-                        <div id="mainCountdown" class="countdown-timer">
-                            <div class="countdown-item">
-                                <span id="days">00</span>
-                                <small>Hari</small>
-                            </div>
-                            <div class="countdown-item">
-                                <span id="hours">00</span>
-                                <small>Jam</small>
-                            </div>
-                            <div class="countdown-item">
-                                <span id="minutes">00</span>
-                                <small>Menit</small>
-                            </div>
-                            <div class="countdown-item">
-                                <span id="seconds">00</span>
-                                <small>Detik</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="main-content">
-                        <div class="bible-verse">
-                            <p>"Karena seorang anak telah lahir untuk kita, seorang putera telah diberikan untuk kita;"</p>
-                            <p class="verse-ref">Yesaya 9:5</p>
-                        </div>
-
-                        <div class="details">
-                            <div class="detail-item">
-                                <div class="icon"><i class="fas fa-calendar-alt"></i></div>
-                                <div class="text">
-                                    <h3>Hari & Tanggal</h3>
-                                    <p>Kamis, 25 Desember 2025</p>
-                                </div>
-                            </div>
-
-                            <div class="detail-item">
-                                <div class="icon"><i class="fas fa-clock"></i></div>
-                                <div class="text">
-                                    <h3>Waktu</h3>
-                                    <p>16.00 WIB</p>
-                                </div>
-                            </div>
-
-                            <div class="detail-item">
-                                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                                <div class="text">
-                                    <h3>Tempat</h3>
-                                    <p>Taman Kuliner Kalimalang</p>
-                                    <p class="address">Jl. Kalimalang, Jakarta Timur</p>
-                                    <button class="map-btn" onclick="openMaps()">
-                                        <i class="fas fa-map"></i> Lihat Lokasi di Maps
-                                    </button>
-                                    <button class="calendar-btn" onclick="addToCalendar()">
-                                        <i class="fas fa-calendar-plus"></i> Tambah ke Kalender
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="theme">
-                            <h3>Tema Natal</h3>
-                            <p>"Kasih yang Turun ke Dunia"</p>
-                        </div>
-
-                        <div class="dress-code">
-                            <h3><i class="fas fa-tshirt"></i> Dress Code</h3>
-                            <p>Baju bernuansa merah atau hijau natal</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section: RSVP -->
-                <div id="rsvpSection" class="section">
-                    <div class="rsvp-container">
-                        <h2><i class="fas fa-edit"></i> Konfirmasi Kehadiran</h2>
-                        <form id="rsvpForm" onsubmit="submitRSVP(event)">
-                            <div class="form-group">
-                                <label for="rsvpName">Nama Lengkap *</label>
-                                <input type="text" id="rsvpName" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="rsvpAttendance">Konfirmasi Kehadiran *</label>
-                                <select id="rsvpAttendance" required>
-                                    <option value="">Pilih...</option>
-                                    <option value="hadir">Akan Hadir</option>
-                                    <option value="mungkin">Mungkin Hadir</option>
-                                    <option value="tidak">Tidak Bisa Hadir</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group" id="guestCountGroup" style="display: none;">
-                                <label for="rsvpGuests">Jumlah Tamu *</label>
-                                <input type="number" id="rsvpGuests" min="1" value="1">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="rsvpFood">Preferensi Makanan</label>
-                                <select id="rsvpFood">
-                                    <option value="normal">Normal</option>
-                                    <option value="vegetarian">Vegetarian</option>
-                                    <option value="halal">Halal</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="rsvpMessage">Pesan / Doa</label>
-                                <textarea id="rsvpMessage" rows="3" placeholder="Tulis pesan atau doa untuk kami..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="submit-btn">
-                                <i class="fas fa-paper-plane"></i> Kirim Konfirmasi
-                            </button>
-                        </form>
-                        
-                        <div id="rsvpResponse" class="response-message"></div>
-                    </div>
-                </div>
-
-                <!-- Section: Gallery -->
-                <div id="gallerySection" class="section">
-                    <div class="gallery-container">
-                        <h2><i class="fas fa-images"></i> Galeri Panitia & Kegiatan</h2>
-                        
-                        <div class="video-section">
-                            <h3>Video Sambutan</h3>
-                            <div class="video-placeholder">
-                                <i class="fas fa-play-circle"></i>
-                                <p>Video sambutan dari pendeta</p>
-                                <small>Klik untuk memutar</small>
-                            </div>
-                        </div>
-
-                        <div class="gallery-section">
-                            <h3>Panitia Pelaksana</h3>
-                            <div class="gallery-grid">
-                                <div class="gallery-item">
-                                    <div class="photo-placeholder">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <p>Ketua Panitia</p>
-                                    <small>Pdt. John Smith</small>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="photo-placeholder">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <p>Sekretaris</p>
-                                    <small>Maria Magdalena</small>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="photo-placeholder">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <p>Bendahara</p>
-                                    <small>David Anderson</small>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="photo-placeholder">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <p>Koordinator Acara</p>
-                                    <small>Sarah Johnson</small>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="photo-placeholder">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <p>Konsumsi</p>
-                                    <small>Michael Brown</small>
-                                </div>
-                                <div class="gallery-item">
-                                    <div class="photo-placeholder">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <p>Dekorasi</p>
-                                    <small>Lisa Garcia</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="photo-gallery">
-                            <h3>Kenangan Natal Tahun Lalu</h3>
-                            <div class="photo-grid">
-                                <div class="photo-item">📷 Foto 1</div>
-                                <div class="photo-item">📷 Foto 2</div>
-                                <div class="photo-item">📷 Foto 3</div>
-                                <div class="photo-item">📷 Foto 4</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section: Guestbook -->
-                <div id="guestbookSection" class="section">
-                    <div class="guestbook-container">
-                        <h2><i class="fas fa-book"></i> Buku Tamu Digital</h2>
-                        
-                        <div class="guestbook-form">
-                            <h3>Tinggalkan Ucapan & Doa</h3>
-                            <form id="guestbookForm" onsubmit="submitGuestbook(event)">
-                                <div class="form-group">
-                                    <label for="gbName">Nama Anda *</label>
-                                    <input type="text" id="gbName" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="gbMessage">Pesan / Doa *</label>
-                                    <textarea id="gbMessage" rows="4" required placeholder="Tulis ucapan dan doa untuk perayaan natal kami..."></textarea>
-                                </div>
-                                
-                                <button type="submit" class="submit-btn">
-                                    <i class="fas fa-feather"></i> Kirim Ucapan
-                                </button>
-                            </form>
-                        </div>
-
-                        <div class="guestbook-entries">
-                            <h3>Ucapan dari Tamu Lainnya</h3>
-                            <div id="guestbookList" class="entries-list">
-                                <!-- Entries will be loaded here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer">
-                    <div class="stats">
-                        <p><i class="fas fa-eye"></i> <span id="viewCount">0</span> dilihat</p>
-                        <p><i class="fas fa-user-check"></i> <span id="rsvpCount">0</span> konfirmasi</p>
-                    </div>
-                    
-                    <p>"Marilah kita bersukacita dan bersyukur atas kelahiran Juruselamat kita"</p>
-                    
-                    <div class="contact">
-                        <p>Untuk informasi lebih lanjut, hubungi:</p>
-                        <p><i class="fas fa-phone"></i> Panitia Natal GKSI Antiokhia - 0812-3456-7890</p>
-                    </div>
-                    
-                    <div class="share-section">
-                        <p>Bagikan undangan ini:</p>
-                        <div class="share-buttons">
-                            <button class="share-btn whatsapp" onclick="shareWhatsApp()">
-                                <i class="fab fa-whatsapp"></i>
-                            </button>
-                            <button class="share-btn telegram" onclick="shareTelegram()">
-                                <i class="fab fa-telegram"></i>
-                            </button>
-                            <button class="share-btn facebook" onclick="shareFacebook()">
-                                <i class="fab fa-facebook"></i>
-                            </button>
-                            <button class="share-btn copy-link" onclick="copyLink()">
-                                <i class="fas fa-link"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <button class="back-btn" onclick="backToWelcome()">
-                        <i class="fas fa-arrow-left"></i> Kembali ke Halaman Awal
-                    </button>
-                </div>
+        <section class="detail-section">
+            <h3>Detail Ibadah & Perayaan</h3>
+            <div class="info-box">
+                <p><strong>Hari, Tanggal:</strong> Selasa, 25 Desember [Tahun]</p>
+                <p><strong>Waktu:</strong> Pukul 18:00 - Selesai</p>
+                <p><strong>Lokasi:</strong> Aula Utama Gereja [Nama Gereja]</p>
+                <p><strong>Pdt/Pembicara:</strong> Pdt. [Nama Pendeta]</p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p>Memuat Undangan...</p>
-        </div>
+        <section class="location-section">
+            <h3>Peta Lokasi</h3>
+            <div class="map-placeholder">
+                <iframe src="[Ganti dengan link embed Google Maps Gereja Anda]" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="[Ganti dengan link Google Maps langsung]" target="_blank" class="button map-button">Lihat di Google Maps</a>
+        </section>
+        
+        <section class="gallery-section">
+            <h3>Galeri Persiapan Natal</h3>
+            <img src="images/choir.jpg" alt="Paduan Suara" class="gallery-img">
+            <img src="images/decoration.jpg" alt="Dekorasi Gereja" class="gallery-img">
+        </section>
+
+        <section class="rsvp-section">
+            <h3>Konfirmasi Kehadiran (RSVP)</h3>
+            <form id="rsvp-form">
+                <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                <input type="number" id="jumlah-hadir" placeholder="Jumlah Orang yang Hadir (Termasuk Anda)" min="1" required>
+                <button type="submit" class="button rsvp-button">Konfirmasi Kehadiran</button>
+                <p id="rsvp-status"></p>
+            </form>
+        </section>
+
+        <section class="guestbook-section">
+            <h3>Pesan & Doa Natal</h3>
+            <textarea placeholder="Tuliskan ucapan dan doa Natal Anda di sini..."></textarea>
+            <button class="button guestbook-button">Kirim Doa</button>
+        </section>
+        
+        <footer>
+            <p>Atas nama Panitia Natal Gereja [Nama Gereja]. Tuhan Yesus Memberkati.</p>
+            <p>Dibuat dengan ❤️ untuk kemuliaan nama-Nya.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
-</body>
+    
+    </body>
 </html>
