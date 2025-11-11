@@ -1,510 +1,164 @@
-/* Reset dan Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/*
+ * File: style.css
+ * Tema: Undangan Digital Natal (Merah, Hijau Tua, Emas)
+ */
 
 :root {
-    --primary-red: #b21f1f;
-    --primary-blue: #1a2a6c;
-    --primary-gold: #fdbb2d;
-    --secondary-green: #2e8b57;
-    --text-dark: #333;
-    --text-light: #666;
-    --bg-light: #f8f9fa;
-    --white: #ffffff;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --gradient: linear-gradient(135deg, var(--primary-blue), var(--primary-red), var(--primary-gold));
+    --primary-color: #A5002D; /* Merah Natal */
+    --secondary-color: #004D40; /* Hijau Tua/Emerald */
+    --accent-color: #FFD700; /* Emas */
+    --text-light: #F8F8F8;
+    --text-dark: #333333;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    background: var(--gradient);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    font-family: sans-serif; /* Ganti dengan font yang lebih elegan jika menggunakan Google Fonts */
+    margin: 0;
+    padding: 0;
+    background-color: var(--text-light);
+    color: var(--text-dark);
     line-height: 1.6;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+#undangan-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
-/* Music Player */
-.music-player {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.music-btn {
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
-}
-
-.music-btn:hover {
-    background: var(--white);
-    transform: translateY(-2px);
-}
-
-/* Modal Password */
-.modal {
-    display: flex;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.modal-content h2 {
-    color: var(--primary-blue);
-    margin-bottom: 10px;
-}
-
-.modal-content input {
-    width: 100%;
-    padding: 12px;
-    margin: 15px 0;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-.modal-content button {
-    background: var(--primary-blue);
-    color: var(--white);
-    border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    width: 100%;
-}
-
-.hint {
-    font-size: 0.8em;
+/* --- HEADER / HERO --- */
+.hero-section {
+    background-color: var(--primary-color);
     color: var(--text-light);
-    margin-top: 10px;
-}
-
-/* Page Management */
-.page {
-    display: none;
-    width: 100%;
-    min-height: 100vh;
-}
-
-.page.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Navigation */
-.header-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 15px;
-}
-
-.nav-btn {
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 0.8em;
-    color: var(--text-light);
-}
-
-.nav-btn:hover, .nav-btn.active {
-    background: var(--primary-blue);
-    color: var(--white);
-}
-
-/* Sections */
-.section {
-    display: none;
-}
-
-.section.active {
-    display: block;
-}
-
-/* Halaman Input Nama */
-.name-input-container {
-    max-width: 500px;
-    width: 100%;
-    padding: 20px;
-}
-
-.welcome-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 40px 30px;
     text-align: center;
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px 20px;
+    position: relative;
 }
 
-/* Countdown Timer */
-.countdown-section {
-    text-align: center;
+.hero-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    color: var(--accent-color);
+}
+
+.hero-section h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.star-icon {
+    width: 50px;
+    margin-bottom: 15px;
+    /* Ganti dengan ikon bintang yang diwarnai emas */
+}
+
+/* --- COUNTDOWN TIMER --- */
+#countdown-timer {
     margin: 20px 0;
-    padding: 20px;
-    background: linear-gradient(135deg, rgba(26, 42, 108, 0.1), rgba(178, 31, 31, 0.1));
-    border-radius: 15px;
+    padding: 10px;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    display: inline-block;
 }
 
-.countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.countdown-item {
-    background: var(--white);
-    padding: 15px 10px;
-    border-radius: 10px;
-    min-width: 70px;
-    box-shadow: var(--shadow);
-}
-
-.countdown-item span {
+#timer-display {
     font-size: 1.8em;
-    font-weight: 700;
-    color: var(--primary-red);
-    display: block;
+    font-weight: bold;
 }
 
-/* Form Styles */
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--text-dark);
-    font-weight: 600;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-}
-
-.submit-btn {
-    background: var(--gradient);
-    color: var(--white);
+/* --- TOMBOL BUKA UNDANGAN --- */
+#open-undangan {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
     border: none;
-    padding: 15px 30px;
-    border-radius: 10px;
+    padding: 12px 25px;
     font-size: 1.1em;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+#open-undangan:hover {
+    background-color: #F0C419;
+}
+
+/* --- SECTIONS UMUM --- */
+section {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+section:nth-child(even) { /* Latar belakang bergantian */
+    background-color: #f7f7f7;
+}
+
+section h3 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+/* --- LOKASI & GALERI --- */
+.map-placeholder iframe {
+    border-radius: 8px;
+}
+
+.gallery-img {
     width: 100%;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-}
-
-/* Gallery Styles */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 20px 0;
-}
-
-.gallery-item {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-}
-
-.photo-placeholder {
-    font-size: 2.5em;
-    color: var(--text-light);
-    margin-bottom: 10px;
-}
-
-/* Social Share */
-.share-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.share-btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--white);
-    font-size: 0.9em;
-    transition: transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.share-btn:hover {
-    transform: translateY(-2px);
-}
-
-.whatsapp { background: #25D366; }
-.telegram { background: #0088cc; }
-.facebook { background: #3b5998; }
-.copy-link { background: var(--text-light); }
-
-/* Response Messages */
-.response-message {
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
-    text-align: center;
-}
-
-.response-message.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.response-message.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-/* Stats */
-.stats {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    height: auto;
     margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+/* --- BUTTON UMUM --- */
+.button {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 10px auto;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #00796B;
+}
+
+/* --- FORM RSVP/GUESTBOOK --- */
+#rsvp-form input,
+.guestbook-section textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.guestbook-section textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--text-dark);
+    color: #AAAAAA;
+    text-align: center;
+    padding: 20px 0;
     font-size: 0.9em;
-    color: var(--text-light);
 }
 
-/* Loading Screen */
-.loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000;
-}
-
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-top: 5px solid var(--white);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 20px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header-nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .nav-btn {
-        font-size: 0.7em;
-        padding: 8px 10px;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .countdown-timer {
-        gap: 10px;
-    }
-    
-    .countdown-item {
-        min-width: 60px;
-        padding: 10px 5px;
-    }
-    
-    .share-buttons {
-        flex-direction: column;
-    }
-    
-    .music-btn {
-        font-size: 0.8em;
-        padding: 8px 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container, .name-input-container {
-        padding: 10px;
-    }
-    
-    .invitation-card, .welcome-card {
-        padding: 20px;
-    }
-    
-    .church-logo h1 {
-        font-size: 2em;
-    }
-    
-    .natal-title h2 {
-        font-size: 1.7em;
-    }
-}
-
-/* Additional Components */
-.dress-code {
-    text-align: center;
-    margin: 20px 0;
-    padding: 15px;
-    background: linear-gradient(135deg, var(--secondary-green), #3cb371);
-    color: var(--white);
-    border-radius: 10px;
-}
-
-.video-section {
-    margin: 20px 0;
-}
-
-.video-placeholder {
-    background: var(--bg-light);
-    padding: 40px 20px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.video-placeholder:hover {
-    background: #e9ecef;
-}
-
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.photo-item {
-    background: var(--bg-light);
-    padding: 30px 15px;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.entries-list {
-    max-height: 300px;
-    overflow-y: auto;
-    margin: 15px 0;
-}
-
-.guestbook-entry {
-    background: var(--white);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--primary-blue);
-}
-
-.entry-header {
-    display: flex;
-    justify-content: between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.entry-name {
-    font-weight: 600;
-    color: var(--primary-blue);
-}
-
-.entry-date {
-    font-size: 0.8em;
-    color: var(--text-light);
-}
-
-.entry-message {
-    color: var(--text-dark);
-    line-height: 1.5;
+/* (Opsional) Styling untuk menyembunyikan konten sebelum tombol Buka ditekan */
+.detail-section, .location-section, .gallery-section, .rsvp-section, .guestbook-section, footer {
+    /* Hapus baris ini jika Anda ingin semua konten langsung terlihat */
+    /* display: none; */ 
 }
